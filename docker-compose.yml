@@ -1,0 +1,22 @@
+version: "3"
+services:
+  jenkins:
+    build:
+      context: ./
+      args:
+        - DOCKER_GID=${DOCKER_GID}
+        - JENKINS_GID=${JENKINS_GID}
+        - JENKINS_UID=${JENKINS_UID}
+        - JENKINS_GROUPNAME=${JENKINS_GROUPNAME}
+        - JENKINS_USERNAME=${JENKINS_USERNAME}
+        - HOST_DOCKER_VERSION=${HOST_DOCKER_VERSION}
+        - HOST_DOCKER_COMPOSE_VERSION=${HOST_DOCKER_COMPOSE_VERSION}
+    environment:
+      - JAVA_OPTS=-Duser.timezone=Asia/Tokyo -Dfile.encoding=UTF-8 -Dsun.jnu.encoding=UTF-8
+    restart: always
+    ports:
+      - 8080:8080
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+      - /home/tempuser/workspace:/var/jenkins_home/workspace
+      - /var/run/docker.sock:/var/run/docker.sock
