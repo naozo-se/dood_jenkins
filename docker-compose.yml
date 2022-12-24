@@ -18,5 +18,5 @@ services:
       - 8080:8080
     volumes:
       - ./jenkins_home:/var/jenkins_home
-      - /home/tempuser/workspace:/var/jenkins_home/workspace
+      - ${HOST_WORKSPACE_PATH}:/var/jenkins_home/workspace
       - /var/run/docker.sock:/var/run/docker.sock
