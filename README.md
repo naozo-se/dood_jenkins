@@ -5,7 +5,7 @@
 ```shell
 cd [current_dir]
 mkdir jenkins_home
-chown -R [uid]:[gid]
+chown -R [uid]:[gid] jenkins_home
 docker-compose up -d --build
 ```
 
